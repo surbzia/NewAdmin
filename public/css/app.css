@@ -1,0 +1,70 @@
+.loginscreen {
+  background-color: black;
+}
+
+.chat_page .message-sent div {
+  background: #00000014;
+  color: black;
+}
+.chat_page .message-sent span {
+  font-size: 12px;
+  display: block;
+  text-align: right;
+}
+.chat_page .message-sent .chat_attachements {
+  background: transparent;
+  display: block;
+  width: 100%;
+}
+.chat_page .message-sent .chat_attachements span {
+  float: right;
+}
+.chat_page .message-get div {
+  background: #00800033;
+  color: black;
+}
+.chat_page .message-get span {
+  font-size: 12px;
+  display: block;
+}
+.chat_page .message-get .chat_attachements {
+  background: transparent;
+  display: block;
+  width: 100%;
+}
+.chat_page .message-get .chat_attachements span {
+  float: left;
+}
+.chat_page .chat_row {
+  max-height: 650px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.chat_page .message_area_editor {
+  width: 100%;
+  border: 1px solid #00000030;
+  outline: none;
+}
+.chat_page .message_area_editor:empty::before {
+  content: "Type Message Here";
+  width: 100%;
+  color: black;
+}
+
+.chip-with-badge {
+  margin-right: 25px;
+}
+.chip-with-badge .badge {
+  position: absolute;
+  top: -13px;
+  right: -10px;
+  color: white;
+  background: #0037ff;
+  z-index: 8;
+  border-radius: 20px;
+  padding: 2px;
+  font-size: 15px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}

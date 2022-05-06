@@ -1,0 +1,90 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\{{ model }}Request;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Resources\{{ model }}Resource;
+use App\Repositories\ListRepository;
+class {{ class }} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected $listRep;
+    public function __construct(ListRepository $listRep)
+    {
+        $this->listRep = $listRep;
+        $this->listRep->bindModel({{ model }}::class);
+    }
+
+    public function index()
+    {
+        Gate::authorize('viewAny',{{ model }}::class);
+        $query = $this->listRep->listFilteredQuery(['col1', 'col2'])
+        ->select('table.*');
+        if(isset($_GET['perpage'])&&intval($_GET['perpage'])>0){
+            $query=$query->paginate($_GET['perpage']);
+        }else{
+            $query=$query->get();
+        }
+        return {{ model }}Resource::collection($query);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{ model }}Request $request)
+    {
+        Gate::authorize('create',{{ model }}::class);
+        ${{ modelVariable }} = {{ model }}::create($request->only('col1','col2'));
+        return new {{ model }}Resource(${{ modelVariable }});
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        Gate::authorize('view',${{ modelVariable }});
+        return new {{ model }}Resource(${{ modelVariable }});
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{ model }}Request $request, {{ model }} ${{ modelVariable }})
+    {
+        Gate::authorize('update',${{ modelVariable }});
+        ${{ modelVariable }}->update($request->only('col1','col2'));
+        return new {{ model }}Resource(${{ modelVariable }});
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        Gate::authorize('delete',${{ modelVariable }});
+        ${{ modelVariable }}->delete();
+        return response()->json(null, 204);
+    }
+}

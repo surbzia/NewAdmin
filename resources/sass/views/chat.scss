@@ -1,0 +1,56 @@
+.chat_page{
+    .message-sent{
+        div{
+            background: #00000014;
+            color: black;
+        }
+        span{
+            font-size: 12px;
+            display: block;
+            text-align: right;
+        }
+        .chat_attachements{
+            background: transparent;
+            display: block;
+            width: 100%;
+            span{
+                float: right;
+            }
+        }
+    }
+    .message-get{
+        div{
+            background: #00800033;
+            color: black;
+        }
+        span{
+            font-size: 12px;
+            display: block;
+        }
+        .chat_attachements{
+            background: transparent;
+            display: block;
+            width: 100%;
+            span{
+                float: left;
+            }
+        }
+    }
+    .chat_row{
+        max-height: 650px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    .message_area_editor {
+        width: 100%;
+        border: 1px solid #00000030;
+        outline: none;
+        &:empty{
+            &::before{
+                content: 'Type Message Here';
+                width: 100%;
+                color: black;
+            }
+        }
+    }
+}
