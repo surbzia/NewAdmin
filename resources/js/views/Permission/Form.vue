@@ -1,15 +1,15 @@
 <template>
   <div>
 
-  <breadcumbs :data="{step1:'Permissions',step2:'Edit'}"></breadcumbs>
+  <breadcumbs :data="{step1:'Permissions',step2:'Add'}"></breadcumbs>
 <div class="container-fluid">
     <div class="row card p-3">
      <div class="row">
         <div class="col-md-6">
-        <input type="text" v-model="form.name" class="form-control form-control-sm">
+        <input type="text" v-model="form.name" class="form-control form-control-sm" placeholder="Name">
       </div>
       <div class="col-md-6">
-        <input type="text" v-model="form.title" class="form-control form-control-sm">
+        <input type="text" v-model="form.title" class="form-control form-control-sm" placeholder="Title">
       </div>
      </div>
      <div class="row">

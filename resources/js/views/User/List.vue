@@ -4,14 +4,8 @@
     <!-- <Loader></Loader> -->
     <div class="container-fluid">
       <div class="row card">
-        <div class="col-md-12 text-right">
-          <router-link
-            :to="{ name: 'auth.users.add' }"
-            class="btn bg-gradient-primary btn-sm pl-3 pr-3"
-            >Add</router-link
-          >
-        </div>
-        <div class="col-md-12">
+          <div class="row mt-2 ml-2 mr-2">
+              <div class="col-md-8">
           <input
             type="text"
             v-model="search"
@@ -19,6 +13,15 @@
             placeholder="Search Here"
           />
         </div>
+        <div class="col-md-4 text-right">
+          <router-link
+            :to="{ name: 'auth.users.add' }"
+            class="btn bg-gradient-primary btn-sm pl-3 pr-3"
+            >Add</router-link
+          >
+        </div>
+          </div>
+        
         <div class="col-md-12">
           <table class="table table-striped bg-light table-sm m-2 p-4">
             <thead>
