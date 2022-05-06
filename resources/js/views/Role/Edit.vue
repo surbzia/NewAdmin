@@ -110,7 +110,7 @@ export default {
             //errors here
         }else{
             //suuccess here
-             this.$toastr.s("Role Updated successfully.", "Success");
+             this.$toaster.success("Role has been updated successfully.");
               setTimeout(() => 
              this.$router.push({ name: "auth.roles.listing" }), 
               3000);

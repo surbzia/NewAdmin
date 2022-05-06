@@ -264,7 +264,7 @@ export default {
                 fileData.append("attachements[0]", this.image);
                 await fileservice.create(fileData)
             }
-            this.$toastr.s("Profile Updated successfully.", "Success");
+            this.$toaster.success("Profile Updated successfully.");
             //   setTimeout(() => 
             //  this.$router.push({ name: "auth.roles.listing" }), 
             //   2000);

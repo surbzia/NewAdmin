@@ -161,7 +161,7 @@ export default {
         //errors here
       } else {
         //suuccess here
-        this.$toastr.s("User Added successfully.", "Success");
+            this.$toaster.success("User has been added successfully.");
         setTimeout(
           () => this.$router.push({ name: "auth.users.listing" }),
           3000

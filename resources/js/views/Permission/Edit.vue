@@ -63,7 +63,7 @@ breadcumbs
             //errors here
         }else{
             //suuccess here
-                this.$toastr.s("Permission Updated successfully.", "Success");
+                   this.$toaster.success("Permission has been updated successfully.");
               setTimeout(() => 
              this.$router.push({ name: "auth.permissions.listing" }), 
               3000);

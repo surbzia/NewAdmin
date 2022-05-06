@@ -6,13 +6,16 @@ import VueRouter from "vue-router";
 import CKEditor from "@ckeditor/ckeditor5-vue2";
 import { store } from "./store";
 import router from "./routes";
-import VueToastr from "vue-toastr";
+// import VueToastr from "vue-toastr";
+import Toaster from 'v-toaster';
+import 'v-toaster/dist/v-toaster.css';
 window.Vue = require("vue").default;
 import loginservice from "@services/auth/login";
 
-Vue.use(VueToastr, {
-    /* OverWrite Plugin Options if you need */
-});
+// Vue.use(VueToastr, {
+//     /* OverWrite Plugin Options if you need */
+// });
+Vue.use(Toaster, {timeout: 5000})
 Vue.use(VueRouter);
 Vue.use(CKEditor);
 

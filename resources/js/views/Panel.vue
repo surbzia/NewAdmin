@@ -45,7 +45,7 @@ export default {
   },
   methods:{
   },
-  async mounted(){
+   mounted(){
 
   },
   computed: {

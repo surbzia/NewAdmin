@@ -189,7 +189,7 @@ export default {
             //errors here
         }else{
             //suuccess here
-              this.$toastr.s("Role Created successfully.", "Success");
+               this.$toaster.success("Role has been added successfully.");
               setTimeout(() => 
              this.$router.push({ name: "auth.roles.listing" }), 
               2000);

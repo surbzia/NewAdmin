@@ -129,7 +129,6 @@ export default {
     },
     adduser: async function () {
       this.resetError();
-      if (this.$refs.form.validate()) {
         this.btnloading = true;
         var formdata = new FormData();
         formdata.append("first_name", this.first_name);
@@ -166,9 +165,9 @@ export default {
           //errors here
         } else {
           //suuccess here
+          this.$toaster.success("User has been updated successfully.");
           this.$router.push({ name: "auth.users.listing" });
         }
-      }
     },
   },
   computed: {
