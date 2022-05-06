@@ -1,6 +1,7 @@
 <template>
   <div>
     <breadcumbs :data="{ step1: 'Users', step2: '' }"></breadcumbs>
+    <!-- <Loader></Loader> -->
     <div class="container-fluid">
       <div class="row card">
         <div class="col-md-12 text-right">
@@ -113,9 +114,11 @@
 import Swal from "sweetalert2";
 import userservice from "@services/auth/user";
 import breadcumbs from "@/components/sidebars/breadcumbs.vue";
+import Loader from "@/components/Loader.vue";
 export default {
   components: {
     breadcumbs,
+    Loader
   },
   name: "auth.users.listing",
   data() {

@@ -73,7 +73,7 @@
                 type="password"
                 v-model="password"
                 class="form-control form-control-sm"
-                placeholder="Password"
+                placeholder="write password if want to update"
               />
             </div>
           </div>
@@ -91,131 +91,6 @@
         </div>
       </div>
     </div>
-    <!-- <v-breadcrumbs :items="bread">
-      <template v-slot:divider>
-        <v-icon>mdi-forward</v-icon>
-      </template></v-breadcrumbs
-    >
-</v-breadcrumbs>
-<v-row no-gutters  class="grey lighten-5 pa-10 rounded elevation-10">
-<v-col
-cols="12"
-sm="12"
->
-<v-form
-ref="form"
-v-model="loading"
-lazy-validation
->
-
-<v-row>
-<v-col
-  cols="6"
-  sm="6"
-  class="pb-0"
->
-  <v-text-field
-    v-model="first_name"
-    :rules="[rules.required]"
-    :error-messages="errors.first_name"
-    label="First Name"
-  ></v-text-field>
-</v-col>
-<v-col
-  cols="6"
-  sm="6"
-  class="pb-0"
->
-  <v-text-field
-    v-model="last_name"
-    :rules="[rules.required]"
-    :error-messages="errors.last_name"
-    label="Last Name"
-  ></v-text-field>
-</v-col>
-
-<v-col
-  cols="12"
-  sm="12"
-  class="pb-0"
->
-  <v-text-field
-    v-model="email"
-    :rules="[rules.required]"
-    :error-messages="errors.email"
-    label="Email"
-  ></v-text-field>
-</v-col>
-
-<v-col
-  cols="12"
-  sm="12"
-  class="pb-0"
->
-<v-select
-    :items="roles"
-    item-text="name"
-    item-value="id"
-    label="Role*"
-    required
-    v-model="role_id"
-    :error-messages="errors.role_id"
-></v-select>
-</v-col>
-
-
-<v-col
-  cols="12"
-  sm="12"
-  class="pb-0"
->
-  <v-text-field
-    v-model="password"
-    :error-messages="errors.password"
-    label="Password"
-    type="password"
-    autocomplete="new-password"
-  ></v-text-field>
-</v-col>
-{{image}}
-<v-col cols="12" cm="12" class="pb-0">
-<v-file-input
-    accept="image/*"
-    v-model="image"
-    :error-messages="errors.image"
-    label="Image"
-  ></v-file-input>
-</v-col>
-<v-col v-if="image_url" cols="12" cm="12" class="pb-0">
-  <v-img
-    :lazy-src="image_url"
-    max-height="150"
-    max-width="250"
-    :src="image_url"
-  ></v-img>
-</v-col>
-
- <v-col
-  cols="12"
-  sm="12"
-  class="pb-0"
->
-<v-btn
-    color="secondary"
-    elevation="1"
-    large
-    raised
-    @click="addbrand"
-    :loading="btnloading"
-    :disabled="btnloading"
-  >Update</v-btn>
-</v-col>
-
-</v-row>
-
-</v-form>
-</v-col>
-</v-row> -->
   </div>
 </template>
 

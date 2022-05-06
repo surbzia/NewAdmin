@@ -1,6 +1,79 @@
 <template>
   <div>
-<v-row no-gutters  class="grey lighten-5 pa-10 rounded elevation-10">
+        <breadcumbs :data="{ step1: 'User Profile', step2: 'Update' }"></breadcumbs>
+    <div class="container-fluid card">
+      <div class="row p-3">
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div style="text-align: center">
+                <img :src="imageurl" height="86px" class="responsive" alt="" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <input
+                type="file"
+                class="form-control form-control-sm"
+                placeholder="Password"
+               @change="onFileChange"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-6">
+              <input
+                type="text"
+                v-model="first_name"
+                class="form-control form-control-sm"
+                placeholder="First Name"
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="text"
+                v-model="last_name"
+                class="form-control form-control-sm"
+                placeholder="Last Name"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <input
+                type="email"
+                v-model="email"
+                class="form-control form-control-sm"
+                placeholder="Email Address"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="password"
+                v-model="password"
+                class="form-control form-control-sm"
+                placeholder="write password if want to update"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pb-3 pr-3">
+        <div class="col-md-12 text-right">
+          <button
+            type="button"
+            @click="adduser"
+            class="btn bg-gradient-primary btn-sm pl-3 pr-3 text-white"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+<!-- <v-row no-gutters  class="grey lighten-5 pa-10 rounded elevation-10">
 <v-col
 cols="12"
 sm="12"
@@ -107,14 +180,18 @@ lazy-validation
 
 </v-form>
 </v-col>
-</v-row>
+</v-row> -->
   </div>
 </template>
 
 <script>
 import loginservice from "@services/auth/login";
 import fileservice from "@services/auth/file";
+import breadcumbs from "@/components/sidebars/breadcumbs.vue";
 export default {
+  components: {
+    breadcumbs,
+  },
   name: "auth.company.edit",
   mounted(){
       this.startProfile()
@@ -138,9 +215,15 @@ export default {
           file: [],
       }
     },
-    addbrand: async function () {
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+        return;
+      this.image = files[0];
+      this.file = 1;
+    },
+        adduser: async function () {
         this.resetError()
-      if (this.$refs.form.validate()) {
         this.btnloading = true;
         var formdata = new FormData();
         formdata.append("first_name", this.first_name);
@@ -149,7 +232,7 @@ export default {
         if(this.password){
             formdata.append("password", this.password);
         }
-        if(this.image.size){
+        if(this.file == 1){
             formdata.append("file", this.image);
         }
         this.btnloading = false;
@@ -181,9 +264,12 @@ export default {
                 fileData.append("attachements[0]", this.image);
                 await fileservice.create(fileData)
             }
+            this.$toastr.s("Profile Updated successfully.", "Success");
+            //   setTimeout(() => 
+            //  this.$router.push({ name: "auth.roles.listing" }), 
+            //   2000);
             this.startProfile()
         }
-      }
     },
   },
   data() {
@@ -202,6 +288,7 @@ export default {
           file: [],
       },
       image: {},
+      file: 0,
       loading: false,
       btnloading: false,
       rules: {
