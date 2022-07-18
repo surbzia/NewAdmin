@@ -42,13 +42,7 @@
         }
     </style>
     <div id="app">
-        {{-- <topbar></topbar>
-        <left_nav></left_nav>
-        <div class="">
-            <div class="mb-15 ml-0"> --}}
-                <router-view />
-             {{-- </div>
-        </div> --}}
+                <router-view/>
     </div>
     </div>
     <!-- js -->

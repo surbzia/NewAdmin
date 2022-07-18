@@ -25,13 +25,13 @@
         <div class="sidebar-menu">
           <ul id="accordion-menu">
             <li>
-              <router-link :to="'/'" class="dropdown-toggle no-arrow">
+              <router-link :to="'/admin/dashboard'" class="dropdown-toggle no-arrow">
                 <span class="micon dw dw-analytics-3"></span
                 ><span class="mtext">Dashboard</span>
               </router-link>
             </li>
             <li>
-              <router-link :to="'/'" class="dropdown-toggle no-arrow">
+              <router-link :to="'/admin/dashboard'" class="dropdown-toggle no-arrow">
                 <span class="micon dw dw-analytics-3"></span
                 ><span class="mtext">ABC</span>
               </router-link>

@@ -32,7 +32,7 @@ router.beforeEach(async (to, from, next) => {
     //         store: store,
     //     })
     // }
-    if (to.meta.guest) {
+    if (to.meta.guest || to.meta.layout == 'Front') {
         //for guests and payments
         next();
     } else {

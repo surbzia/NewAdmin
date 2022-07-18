@@ -12,5 +12,13 @@ export default [
                 path: '',
                 component: () => import('@/views/Frontend/index.vue'),
                 name: 'index'
-            }]
+            },
+            {
+                path: 'service',
+                component: () => import('@/views/Frontend/service.vue'),
+                name: 'service'
+            }
+
+
+        ]
     }]
