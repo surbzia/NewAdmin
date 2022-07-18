@@ -2,7 +2,7 @@ import admin from '@/middleware/admin'
 export default [
     {
         path: '/',
-        name: 'index',
+        name: 'front',
         component: () => import('@/layouts/FrontendLayout.vue'),
         meta: {
             layout: 'Front'
@@ -11,12 +11,12 @@ export default [
             {
                 path: '',
                 component: () => import('@/views/Frontend/index.vue'),
-                name: 'index'
+                name: 'front.index'
             },
             {
                 path: 'service',
                 component: () => import('@/views/Frontend/service.vue'),
-                name: 'service'
+                name: 'front.service'
             }
 
 
