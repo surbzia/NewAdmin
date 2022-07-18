@@ -1,63 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+    <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Dashboard</title>
+    <title> Phyllislavelle | ADMIN </title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">\
-    {{-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> --}}
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/apple-touch-icon.png') }}">
+    {{-- <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('image/logo.png') }}"> --}}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('image/logo.png') }}">
+
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    </link>
+    <link rel="stylesheet" type="text/css" href="/templete/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="/templete/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/templete/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/templete/plugins/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/templete/vendors/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body>
+
+    <style>
+        .parent {
+            height: 200px;
+            background: #CCCCCC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
     <div id="app">
-        <div class="wrapper">
-            <topbar></topbar>
-
-            <left_nav></left_nav>
-
-
-            <div class="content-wrapper">
-                <section class="content">
-                    <div class="container-fluid">
-
-                        <router-view />
-                    </div>
-                </section>
+        <topbar></topbar>
+        <left_nav></left_nav>
+        <div class="">
+            <div class="mb-15 ml-0 mt-15">
+                <router-view />
             </div>
-
-
         </div>
-
-
     </div>
+    </div>
+    <!-- js -->
     <script src="/js/app.js"></script>
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/dist/js/adminlte.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    {{-- <script src="dist/js/demo.js"></script> --}}
+    <script src="/templete/vendors/scripts/core.js"></script>
+    <script src="/templete/vendors/scripts/script.min.js"></script>
+    <script src="/templete/vendors/scripts/process.js"></script>
+    <script src="/templete/vendors/scripts/layout-settings.js"></script>
+    <script src="/templete/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/templete/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/templete/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="/templete/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="/templete/vendors/scripts/dashboard.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 
 </html>

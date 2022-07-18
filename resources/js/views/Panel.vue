@@ -1,43 +1,26 @@
-<template><div>
-   <breadcumbs :data="{step1:'Dashboard', step2:''}"></breadcumbs>
-  <div class="container-fluid">
-    <div class="row m-3">
-       <div class="col-md-4 card">
-         <div style=" text-align: center;">
-           <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" height="165px" class="responsive" alt="">
-         </div>
-       </div>
-      <div class="col-md-8 card">
-      <table class="table table-bordered">
-        <tr>
-            <td>User Name :</td>
-            <td>{{user.name}}</td>
-        </tr>
-        <tr>
-            <td>User Email :</td>
-            <td>{{user.email}}</td>
-        </tr>
-        <tr>
-            <td>User Phone :</td>
-            <td>{{(user.phone != null) ? user.phone : 'N/A' }}</td>
-        </tr>
-      </table>
-
-      </div>
-     
+<template>
+<div class="main-container">
+    <div class="card-box pd-20 mb-30">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <img style="height: 100px !important" src="/templete/vendors/images/banner-img.png"
+                    alt="">
+            </div>
+            <div class="col-md-8">
+                <h4 class="font-20 weight-500 mb-10 text-capitalize">
+                    Welcome back <div class="weight-800 font-50" style="color: #036c76; font-size: 53px;">
+                       {{user.name}}</div>
+                </h4>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-    
+
 </template>
 <script>
 import Swal from "sweetalert2";
-import breadcumbs from "@/components/sidebars/breadcumbs.vue";
 const axios = require('axios');
 export default {
-  components: {
-    breadcumbs
-  },
   data(){
     return {
 

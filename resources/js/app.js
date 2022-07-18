@@ -21,8 +21,6 @@ Vue.use(CKEditor);
 
 import left_nav from "@/components/sidebars/left_nav.vue";
 import topbar from "@/components/sidebars/topbar.vue";
-import breadcumbs from "@/components/sidebars/breadcumbs.vue";
-
 import adminbar from "@/components/sidebars/admin.vue";
 import notifications from "@/components/sidebars/notifications.vue";
 
@@ -72,7 +70,6 @@ new Vue({
     components: {
         left_nav,
         topbar,
-        breadcumbs,
     },
     data() {
         return {};

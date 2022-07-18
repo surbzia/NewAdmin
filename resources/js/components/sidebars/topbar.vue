@@ -1,51 +1,26 @@
 <template>
-    <div  v-if="loggedIn">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="margin-top: -26px;">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        data-widget="pushmenu"
-                        href="#"
-                        role="button"
-                        ><i class="fas fa-bars"></i
-                    ></a>
-                </li>
-                <!-- <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li> -->
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                 <i class="fas fa-user-circle" style="    font-size: 35px;
-    margin-top: -5px;"></i>
-                        <!-- <span class="badge badge-warning navbar-badge">15</span> -->
+    <div class="header shadow" v-if="loggedIn">
+        <div class="header-left">
+            <span class="menu-icon icon-copy ti-menu ml-3"></span>
+        </div>
+        <div class="header-right pr-20">
+            <div class="user-info-dropdown">
+                <div class="dropdown">
+                    <a class="dropdown-toggle mt-xl-1" href="#" role="button" data-toggle="dropdown"
+                        style="padding-top: 15px;">
+                        <span class="font-10"> {{user.name}}</span>
                     </a>
-                    <div
-                        class="dropdown-menu dropdown-menu-lg dropdown-menu-right"
-                    >
-                                          
-                        <div class="dropdown-divider"></div>
-                        <router-link :to="'/profile'" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> Profile
-                        </router-link>
-                        <div class="dropdown-divider"></div>
-                        <a
-                            href="javascript:;"
-                             @click="logoutauthparent"
-                            class="dropdown-item dropdown-footer text-danger"
-                            >Logout</a
-                        >
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list shadow-lg">
+                        <!-- <a class="dropdown-item" @click="logoutauthparent" href="#"><i class="dw dw-logout"></i> Log
+                            Out</a> -->
+                        <button class="dropdown-item" @click="logoutauthparent"><i class="dw dw-logout"></i> Log
+                            Out</button>
                     </div>
-                </li>
-            </ul>
-        </nav>
+                </div>
+            </div>
+        </div>
     </div>
+
 </template>
 <script>
 export default {
