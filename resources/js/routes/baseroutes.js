@@ -5,6 +5,6 @@ export default [
     {
         path: '/login',
         name: 'auth.login',
-        component: () => import('@/views/Auth/Login.vue'),
+        component: () => import('@/views/Admin/Auth/Login.vue'),
     }
 ];

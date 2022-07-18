@@ -40,7 +40,7 @@ router.beforeEach(async (to, from, next) => {
         if (to.name !== "auth.login" && !isAuthenticated)
             next({ name: "auth.login" });
         if (to.name === "auth.login" && isAuthenticated)
-            next({ name: "auth.dashboard" });
+            next({ name: "index" });
         else next();
     }
 });
