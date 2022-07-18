@@ -1,7 +1,7 @@
 import admin from '@/middleware/admin'
 export default [
 	{
-        path: '/dashboard',
+        path: '/',
         name: 'auth.dashboard',
         component: () => import('@/views/Panel.vue'),
     },

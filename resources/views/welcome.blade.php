@@ -3,7 +3,7 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title> Phyllislavelle | ADMIN </title>
+    <title> Empty  | ADMIN </title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/apple-touch-icon.png') }}">
@@ -36,7 +36,6 @@
     <style>
         .parent {
             height: 200px;
-            background: #CCCCCC;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -46,7 +45,7 @@
         <topbar></topbar>
         <left_nav></left_nav>
         <div class="">
-            <div class="mb-15 ml-0 mt-15">
+            <div class="mb-15 ml-0">
                 <router-view />
             </div>
         </div>
