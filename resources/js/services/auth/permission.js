@@ -9,6 +9,15 @@ class permissionservice{
 			return error;
 		});
 	}
+    GetModules() {
+        return axios.get(`/api/GetAllModules`)
+            .then(function (response) {
+                return response.data;
+            })
+            .catch(function (error) {
+                return error;
+            });
+    }
     async create(formData){
         var res = await  axios.post('/api/permissions',formData).then(function(e){
             return {status: 1, data: e.data.data}

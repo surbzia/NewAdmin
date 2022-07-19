@@ -26,6 +26,7 @@ Route::group(['middleware' => ['cors', 'json.response', 'auth:api']], function (
     Route::apiResource('roles', RoleController::class);
     Route::apiResource('banners', BannerController::class);
     Route::apiResource('permissions', PermissionController::class);
+    Route::get('GetAllModules', [PermissionController::class, 'GetAllModules']);
     Route::apiResource('user', UserController::class);
     Route::apiResource('user-exemptions', UserExemptionController::class);
     Route::apiResource('products', ProductController::class);

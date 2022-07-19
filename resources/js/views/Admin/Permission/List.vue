@@ -15,7 +15,7 @@
         <div class="col-md-4 text-right">
           <router-link
             :to="{ name: 'auth.permissions.add' }"
-            class="btn bg-gradient-primary btn-sm pl-3 pr-3"
+            class="btn btn-primary"
             >Add</router-link
           >
         </div>
@@ -26,7 +26,7 @@
               <tr>
                 <td>ID</td>
                 <td>Name</td>
-                <td>Title</td>
+                <td>Module</td>
                 <td>Action</td>
               </tr>
             </thead>
@@ -34,12 +34,12 @@
               <tr v-for="item in items" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.title}}</td>
+                <td>{{item.module}}</td>
                 <td>
-                  <router-link :to="{ name: 'auth.permissions.edit', params: { id: item.id } }" class="btn bg-gradient-primary btn-xs">
+                  <router-link :to="{ name: 'auth.permissions.edit', params: { id: item.id } }" class="btn btn-outline-secondary">
                     Edit
                   </router-link>
-                  <a href="javascript:;" @click="deleteuser(item.id)" class="btn bg-gradient-danger btn-xs">
+                  <a href="javascript:;" @click="deleteuser(item.id)" class="btn btn-outline-danger">
                     Delete
                   </a>
                 </td>

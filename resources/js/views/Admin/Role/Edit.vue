@@ -4,16 +4,20 @@
 <div class="container-fluid">
     <div class="row card">
      <div class="row pl-3 pr-3 pt-2">
-          <div class="col-md-6 text-left">
-        <div class="icheck-info d-inline">
-            <input type="checkbox" @click="select_all" v-model="select_all_check" id="select_all">
-            <label for="select_all">
-            Select All
-            </label>
+          <div class="col-md-6 text-left" style="padding-left: 44px;">
+                   <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  @click="select_all" id="select_all"
+                />
+                <label
+                  class="custom-control-label"
+                  for="select_all"
+                  >Select All </label
+                >
           </div>
-       </div>
         <div class="col-md-6 text-right">
-         <button type="button" @click="addpermission" class="btn bg-gradient-primary btn-sm pl-3 pr-3 text-white" >Update</button>
+         <button type="button" @click="addpermission" class="btn btn-success" >Update</button>
        </div>
      </div>
       <div class="row p-3">
@@ -29,14 +33,31 @@
       <hr>
        <div class="col-md-12">
         <div class="row">
-        <div class="col-md-3" v-for="permission  in permissions" :key="permission.id">
-             <div class="icheck-primary d-inline">
-            <input type="checkbox" v-bind:id="permission.id" v-bind:value='permission.id'  v-model='form.permissions'>
-            <label v-bind:for="permission.id">
-             {{permission.title}}
-            </label>
-          </div>
-         </div>
+         <div
+              class="col-md-3 card m-1 p-0"
+              v-for="(permission, key) in permissions"
+              :key="key"
+            >
+              <label class="bg-info mt-1 p-1 text-white">{{ key }}</label>
+              <div
+                class="custom-control custom-checkbox mb-5 mr-3"
+                v-for="per in permission"
+                :key="per.id"
+              >
+                <input
+                  type="checkbox"
+                  v-bind:value="per.id"
+                  v-model="form.permissions"
+                  class="custom-control-input"
+                  :id="'customCheck3-' + per.id"
+                />
+                <label
+                  class="custom-control-label"
+                  :for="'customCheck3-' + per.id"
+                  >{{ per.name }}</label
+                >
+              </div>
+            </div>
         </div>
        </div>
     </div>
@@ -54,10 +75,10 @@ export default {
   },
   name: "auth.roles.add",
   async mounted(){
-    this.permissions = await permissionservice.get('')
+    this.permissions = await permissionservice.get("?byModule=true");
         var res = await rolesservice.get(this.form.id)
         let permissions_to_select = res.permissions.map(e=>{
-            return e.permission_id;
+            return e.id;
         });
 
         this.form = {
@@ -111,8 +132,8 @@ export default {
         }else{
             //suuccess here
              this.$toaster.success("Role has been updated successfully.");
-              setTimeout(() => 
-             this.$router.push({ name: "auth.roles.listing" }), 
+              setTimeout(() =>
+             this.$router.push({ name: "auth.roles.listing" }),
               3000);
         }
     },

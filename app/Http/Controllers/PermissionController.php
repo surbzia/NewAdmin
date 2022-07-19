@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permission;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Requests\PermissionRequest;
 use App\Http\Resources\PermissionResource;
@@ -17,7 +17,6 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        Gate::authorize('viewAny',Permission::class);
         if(isset($_GET['sortCol'])){
             $permissions = Permission::orderBy($_GET['sortCol'],($_GET['sortByDesc']==1?'desc':'asc'));
         }else{
@@ -27,14 +26,20 @@ class PermissionController extends Controller
             $permissions = $permissions->Where(
                 function($query) {
                 $q = $_GET['search'];
-                $query->orWhere('permissions.title', 'like', '%'.$q.'%')
+                    $query->orWhere('permissions.module', 'like', '%' . $q . '%')
                 ->orWhere('permissions.name', 'like', '%'.$q.'%');
             });
         }
+
         if(isset($_GET['perpage'])&&intval($_GET['perpage'])>0){
             $permissions=$permissions->paginate($_GET['perpage']);
         }else{
             $permissions=$permissions->get();
+        }
+
+        if (isset($_GET['byModule']) && $_GET['byModule']) {
+
+            $permissions = Permission::all()->groupBy('module');
         }
         return PermissionResource::collection($permissions);
     }
@@ -45,10 +50,9 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PermissionRequest $request)
+    public function store(Request $request)
     {
-        Gate::authorize('create',Permission::class);
-        $permission = Permission::create($request->only('name','title'));
+        $permission = Permission::create($request->only('name', 'module', 'slug'));
         $permission->save();
         return new PermissionResource($permission);
     }
@@ -61,8 +65,14 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        Gate::authorize('view',$permission);
+
         return new PermissionResource($permission);
+    }
+
+    public function GetAllModules()
+    {
+        $permissions = Permission::distinct()->get('module');
+        return new PermissionResource($permissions);
     }
 
     /**
@@ -74,8 +84,7 @@ class PermissionController extends Controller
      */
     public function update(PermissionRequest $request, Permission $permission)
     {
-        Gate::authorize('update',$permission);
-        $permission->update($request->only('name','title'));
+        $permission->update($request->only('name', 'module', 'slug'));
         return new PermissionResource($permission);
     }
 
@@ -87,7 +96,6 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        Gate::authorize('delete',$permission);
         $permission->delete();
         return response()->json(null, 204);
     }

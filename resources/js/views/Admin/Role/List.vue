@@ -15,7 +15,7 @@
         <div class="col-md-4 text-right">
           <router-link
             :to="{ name: 'auth.roles.add' }"
-            class="btn bg-gradient-primary btn-sm pl-3 pr-3"
+            class="btn btn-primary"
             >Add</router-link
           >
         </div>
@@ -26,7 +26,6 @@
               <tr>
                 <td>ID</td>
                 <td>Name</td>
-                <td>Title</td>
                 <td>Action</td>
               </tr>
             </thead>
@@ -34,12 +33,11 @@
               <tr v-for="item in items" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.title}}</td>
                 <td>
-                  <router-link v-if="item.name != 'superadmin'" :to="{ name: 'auth.roles.edit', params: { id: item.id } }" class="btn bg-gradient-primary btn-xs">
+                  <router-link v-if="item.name != 'superadmin'" :to="{ name: 'auth.roles.edit', params: { id: item.id } }" class="btn btn-outline-secondary">
                     Edit
                   </router-link>
-                  <a href="javascript:;" v-if="item.name != 'superadmin'"  @click="deleteuser(item.id)" class="btn bg-gradient-danger btn-xs">
+                  <a href="javascript:;" v-if="item.name != 'superadmin'"  @click="deleteuser(item.id)" class="btn btn-outline-danger">
                     Delete
                   </a>
                 </td>
@@ -75,7 +73,7 @@ export default {
         sortDesc:true,
         sortBy:'desc'
       },
-     
+
     };
   },
   watch: {
@@ -134,7 +132,7 @@ export default {
       var query = "";
       var page = this.options.page;
       query += "?page=" + page;
-   
+
       // if (this.options.sortDesc) {
       //   //if 1 then by desc else asc
       //   query += "&sortByDesc=" + (this.options.sortDesc == true ? 1 : 0);

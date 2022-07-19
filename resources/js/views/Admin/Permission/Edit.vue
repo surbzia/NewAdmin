@@ -9,12 +9,21 @@
         <input type="text" v-model="form.name" class="form-control form-control-sm">
       </div>
       <div class="col-md-6">
-        <input type="text" v-model="form.title" class="form-control form-control-sm">
+        <input type="text" v-model="form.slug" class="form-control form-control-sm">
       </div>
      </div>
+          <div class="row mt-4">
+         <div class="col-md-6">
+       <select class="form-control form-control-sm" v-model="form.module" @input.prevent="createModule($event)">
+        <option value="">Select module</option>
+        <option :value="mod.module" v-for="mod in modules" :key="mod.modules">{{mod.module}}</option>
+       </select>
+      </div>
+
+     </div>
      <div class="row">
-        <div class="col-md-12 text-right">
-         <button type="button" @click="addpermission" class="btn bg-gradient-primary btn-sm pl-3 pr-3 text-white">Update</button>
+        <div class="col-md-12 text-right mt-30">
+         <button type="button" @click="addpermission" class="btn btn-success">Update</button>
        </div>
      </div>
     </div>
@@ -32,13 +41,19 @@ breadcumbs
   name: "auth.users.add",
   async mounted(){
         var res = await permissionservice.get(this.form.id)
-        this.form = {
-            name: res.name,
-            title: res.title,
-            id: this.$route.params.id
-        }
+      this.form = {
+          name: res.name,
+          slug: res.slug,
+          module: res.module,
+          id: this.$route.params.id
+      };
+      this.GetAllModules();
   },
-  methods: {
+    methods: {
+       async GetAllModules(){
+       let res = await permissionservice.GetModules();
+       this.modules = res.data;
+      },
     resetError(){
         this.errors = {
           name:[],
@@ -64,8 +79,8 @@ breadcumbs
         }else{
             //suuccess here
                    this.$toaster.success("Permission has been updated successfully.");
-              setTimeout(() => 
-             this.$router.push({ name: "auth.permissions.listing" }), 
+              setTimeout(() =>
+             this.$router.push({ name: "auth.permissions.listing" }),
               3000);
         }
     },
@@ -76,11 +91,13 @@ breadcumbs
     },
   },
   data() {
-    return {
+      return {
+        modules:[],
       form:{
           id: (this.$route.params.id?this.$route.params.id:0),
           name: '',
-          title: '',
+          slug: '',
+            module: '',
       },
       errors: {
           name:[],

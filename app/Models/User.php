@@ -8,13 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 // use Laravel\Sanctum\HasApiTokens;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
 
     use HasApiTokens, HasFactory, Notifiable;
-
-    protected $with = ['permissions'];
+    use HasRoles;
     protected $appends = ['image_url', 'name'];
 
     /**
@@ -50,10 +50,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function permissions()
-    {
-        return $this->hasManyThrough(RolePermission::class, Role::class,'id','role_id','role_id');
-    }
     public function image(){
         return $this->morphOne(File::class,'fileable');
     }

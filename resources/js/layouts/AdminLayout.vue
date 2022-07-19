@@ -4,7 +4,11 @@
     <left_nav></left_nav>
     <div class="">
       <div class="mb-15 ml-0">
+            <div class="main-container">
+    <div class="card-box pd-20 mb-30">
         <router-view />
+      </div>
+      </div>
       </div>
     </div>
   </div>
