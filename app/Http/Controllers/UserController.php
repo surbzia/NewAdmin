@@ -24,7 +24,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        Gate::authorize('viewAny',User::class);
         $user = User::leftJoin('roles','users.role_id','=','roles.id');
         if(isset($_GET['sortCol'])){
             $user = $user->orderBy($_GET['sortCol'],($_GET['sortByDesc']==1?'desc':'asc'));
@@ -37,13 +36,10 @@ class UserController extends Controller
                 $q = $_GET['search'];
                 $query->orWhere('users.first_name', 'like', '%'.$q.'%')
                 ->orWhere('users.last_name', 'like', '%'.$q.'%')->orWhere('users.email', 'like', '%'.$q.'%')
-                ->orWhere('roles.title', 'like', '%'.$q.'%')->orWhere('roles.name', 'like', '%'.$q.'%');
+                    ->orWhere('roles.name', 'like', '%' . $q . '%')->orWhere('roles.name', 'like', '%' . $q . '%');
             });
         }
-        if(!empty($_GET['role_id'])){
-            $user = $user->where('role_id',$_GET['role_id']);
-        }
-        $user=$user->select('users.id','users.email','users.first_name','users.last_name','roles.title as role_name');
+        $user = $user->select('users.id', 'users.email', 'users.first_name', 'users.last_name', 'roles.name as role_name');
         $user=$user->where('users.id','<>',$request->user()->id);
         if(isset($_GET['perpage'])&&intval($_GET['perpage'])>0){
             $user=$user->paginate($_GET['perpage']);
@@ -61,7 +57,6 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        Gate::authorize('create',User::class);
         $user = User::create($request->only('first_name','last_name','email','role_id','password'));
         $user->password = Hash::make($user->password);
         $user->save();
@@ -79,7 +74,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        Gate::authorize('view',$user);
         return new UserResource($user);
     }
 
@@ -112,7 +106,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        Gate::authorize('delete',$user);
         $user->delete();
         return response()->json(null, 204);
     }

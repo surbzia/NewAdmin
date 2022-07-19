@@ -51,7 +51,7 @@
                   >
                 </li>
                 <li>
-                  <router-link :to="'/admin/dashboard'"
+                  <router-link :to="'/admin/users/'"
                     >User</router-link
                   >
                 </li>

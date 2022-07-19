@@ -16,12 +16,12 @@
         <div class="col-md-4 text-right">
           <router-link
             :to="{ name: 'auth.users.add' }"
-            class="btn bg-gradient-primary btn-sm pl-3 pr-3"
+            class="btn btn-success"
             >Add</router-link
           >
         </div>
           </div>
-        
+
         <div class="col-md-12">
           <table class="table table-striped bg-light table-sm m-2 p-4">
             <thead>
@@ -44,14 +44,14 @@
                 <td>
                   <router-link
                     :to="{ name: 'auth.users.edit', params: { id: item.id } }"
-                    class="btn bg-gradient-primary btn-xs"
+                    class="btn btn-outline-secondary"
                   >
                     Edit
                   </router-link>
                   <a
                     href="javascript:;"
                     @click="deleteuser(item.id)"
-                    class="btn bg-gradient-danger btn-xs"
+                    class="btn btn-outline-danger"
                   >
                     Delete
                   </a>

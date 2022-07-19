@@ -2,10 +2,10 @@
   <div>
     <breadcumbs :data="{ step1: 'Users', step2: 'Edit' }"></breadcumbs>
     <div class="container-fluid card">
-      <div class="col-md-12 text-right">
+      <div class="col-md-12 text-right mt-4">
         <router-link
           :to="{ name: 'auth.users.listing' }"
-          class="btn bg-gradient-dark btn-sm pl-3 pr-3"
+          class="btn btn-dark"
           >Back</router-link
         >
       </div>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-md-8">
-          <div class="row">
+          <div class="row  mt-3">
             <div class="col-md-6">
               <input
                 type="text"
@@ -45,7 +45,7 @@
               />
             </div>
           </div>
-          <div class="row">
+          <div class="row  mt-3">
             <div class="col-md-6">
               <input
                 type="email"
@@ -67,7 +67,7 @@
               </select>
             </div>
           </div>
-          <div class="row">
+          <div class="row  mt-3">
             <div class="col-md-12">
               <input
                 type="password"
@@ -84,7 +84,7 @@
           <button
             type="button"
             @click="adduser"
-            class="btn bg-gradient-primary btn-sm pl-3 pr-3 text-white"
+            class="btn btn-success"
           >
             Submit
           </button>
