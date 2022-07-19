@@ -1,6 +1,4 @@
 <template>
-<div class="main-container">
-    <div class="card-box pd-20 mb-30">
         <div class="row align-items-center">
             <div class="col-md-4">
                 <img style="height: 100px !important" src="/templete/vendors/images/banner-img.png"
@@ -13,8 +11,6 @@
                 </h4>
             </div>
         </div>
-    </div>
-</div>
 
 </template>
 <script>

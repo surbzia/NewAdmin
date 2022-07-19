@@ -21,10 +21,10 @@ router.beforeEach(async (to, from, next) => {
         next();
     } else {
         var isAuthenticated = localStorage.getItem("auth_token") ? true : false;
-        if (to.meta.layout == "Admin" && to.name !== "auth.login" && !isAuthenticated)
+        if (to.name !== "auth.login" && !isAuthenticated)
             next({ name: "auth.login" });
-        else if (to.meta.layout == "Admin" && to.name === "auth.login" && isAuthenticated)
-            next({ name: "index" });
+        else if (to.name === "auth.login" && isAuthenticated)
+            next({ name: "auth.login" });
         else next();
     }
 });

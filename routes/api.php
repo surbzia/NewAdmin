@@ -50,8 +50,10 @@ Route::group(['middleware' => ['cors', 'json.response', 'auth:api']], function (
 });
 Route::middleware('auth:api')->get('/me', function (Request $request) {
     $notificationsCount = $request->user()->unreadNotifications()->count();
+    $Role_Permissions = $request->user()->getPermissionsViaRoles();
     $user = $request->user();
     $user->notification_count = $notificationsCount;
+    $user->Role_Permissions = $Role_Permissions;
     return $user;
 });
 Route::middleware('auth:api')->get('/notifications', function (Request $request) {
